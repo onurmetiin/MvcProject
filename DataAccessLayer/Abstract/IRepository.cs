@@ -14,6 +14,6 @@ namespace DataAccessLayer.Abstract
         void Add(T t);
         void Update(T t);
         void Delete(T t);
-        List<T> List(Expression<Func<T,bool>> filter);
+        List<T> List(Expression<Func<T, bool>> filter);
     }
 }
