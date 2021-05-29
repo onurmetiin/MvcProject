@@ -10,6 +10,11 @@ namespace DataAccessLayer.Concrete
 {
     public class Context : DbContext
     {
+        public Context():base("MyConString")
+        {
+
+        }
+        
         public DbSet<About> Abouts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Contact> Contacts { get; set; }

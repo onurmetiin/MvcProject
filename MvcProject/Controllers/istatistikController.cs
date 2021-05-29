@@ -12,10 +12,10 @@ namespace MvcProject.Controllers
     public class istatistikController : Controller
     {
 
-        Context context = new Context();
-
         public ActionResult Index()
         {
+            using (Context context =new Context())
+            {
             ViewBag.KategoriSayisi = context.Categories.ToList().Count().ToString();
             ViewBag.YazilimBaslikSayisi = context.Headers.Where(x => x.CategoryID == 24).ToList().Count().ToString();
             ViewBag.AgecenYazarSayisi = context.Writers.Where(x => x.WriterNane.Contains("a")).ToList().Count().ToString();
@@ -23,8 +23,8 @@ namespace MvcProject.Controllers
             int StatusTrue = context.Categories.Where(x => x.CategoryStatus == true).Count();
             int StatusFalse = context.Categories.Where(x => x.CategoryStatus == false).Count();
             ViewBag.StatusFark = StatusTrue - StatusFalse;
+            }
             return View();
         }
-
     }
 }
